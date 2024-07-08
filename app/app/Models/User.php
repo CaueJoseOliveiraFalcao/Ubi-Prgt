@@ -6,7 +6,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-
+use App\Models\Permission;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 class User extends Authenticatable
 {
     use HasFactory, Notifiable;
@@ -44,5 +45,19 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+    public function givePermissionTo(string $permission): void 
+    {
+        /**@var Permission $p  */
+        $p = Permission::query()->firstOrCreate(['permission' => $permission]);
+        $this->permissions()->attach($p);
+    }
+    public function hasPermissionTo(string $permission) : bool
+    {
+        return $this->permissions()->where('permission', $permission)->exists();
+    }
+    public function permissions(): BelongsToMany
+    {
+        return $this->belongsToMany(Permission::class);
     }
 }
