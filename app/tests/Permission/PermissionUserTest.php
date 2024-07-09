@@ -1,11 +1,13 @@
 <?php
 namespace tests\Permission;
 
+use App\Models\Permission;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Cache;
 use App\Http\Middleware\CheckPermission;
 class PermissionUserTest extends TestCase
 {
@@ -33,6 +35,17 @@ class PermissionUserTest extends TestCase
 
         $response = $this->get('/test-route'); // Certifique-se de que 'admin' está correto aqui
         $response->assertStatus(200);
+    }
+    public function test_cache(){
+
+        
+            /** @var User $user */
+            $user = User::factory()->createOne();
+
+            Permission::query()->create(['permission' => 'edit-articles']);
+                 $fromCache = Cache::get('permissions');
+                 dump($fromCache);
+                $this->assertCount(1 , $fromCache);
     }
     }
 
