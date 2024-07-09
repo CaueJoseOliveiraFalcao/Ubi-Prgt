@@ -6,6 +6,15 @@
          @csrf
       <div class="register-container">
         <h2>Criar uma nova conta</h2>
+        @if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
           <label for="name">Nome:</label>
           <input
             type="text"
