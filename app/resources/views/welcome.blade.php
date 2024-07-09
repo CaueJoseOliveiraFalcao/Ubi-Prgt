@@ -439,6 +439,61 @@ margin-top:30px;
 }
 
 
+.carrolsel-width {
+    font-family: Arial, sans-serif;
+    min-width: 100vw;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50vh;
+}
+
+.carousel {
+    position: relative;
+    width: 70%;
+    max-width: 1200px;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.carousel-inner {
+    display: flex;
+    transition: transform 0.5s ease;
+}
+
+.carousel-item {
+    min-width: 100%;
+    box-sizing: border-box;
+}
+
+.carousel-item img {
+    width: 100%;
+    display: block;
+}
+
+.prev, .next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 5px;
+    cursor: pointer;
+    z-index: 1;
+    border-radius: 50%;
+}
+
+.prev {
+    left: 10px;
+}
+
+.next {
+    right: 10px;
+}
 
        
 
@@ -479,7 +534,24 @@ margin-top:30px;
     <div class="linha-rosa linha2"></div>
 <!-- seção carrossel -->
 <section>
-<a  href="/"><img src="/logo_branca.png" class=imgnav width="1000" height="1000" alt="Logo"/></a>
+  <div class="carrolsel-width">
+        
+
+    <div class="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="1img (1).png" alt="Imagem 1">
+            </div>
+            <div class="carousel-item">
+                <img src="1img (1).png" alt="Imagem 2">
+            </div>
+            <div class="carousel-item">
+                <img src="1img (1).png" alt="Imagem 3">
+            </div>
+        </div>
+        <button class="prev" onclick="moveCarousel(-1)">&#10094;</button>
+        <button class="next" onclick="moveCarousel(1)">&#10095;</button>
+    </div>
 </section>
 <div class="linha-rosa linha3"></div>
 <!-- seção popup -->
@@ -617,3 +689,21 @@ margin-top:30px;
 </body>
 
 </html>
+<script>
+          let currentIndex = 0;
+
+function moveCarousel(direction) {
+    const items = document.querySelectorAll('.carousel-item');
+    const totalItems = items.length;
+
+    currentIndex += direction;
+    if (currentIndex < 0) {
+        currentIndex = totalItems - 1;
+    } else if (currentIndex >= totalItems) {
+        currentIndex = 0;
+    }
+
+    const offset = -currentIndex * 100;
+    document.querySelector('.carousel-inner').style.transform = `translateX(${offset}%)`;
+}
+</script>

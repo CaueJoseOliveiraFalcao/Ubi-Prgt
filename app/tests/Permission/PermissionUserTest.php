@@ -31,7 +31,7 @@ class PermissionUserTest extends TestCase
         $user->givePermissionTo('admin');
         $this->actingAs($user);
 
-        $response = $this->get('/test-route/admin'); // Certifique-se de que 'admin' está correto aqui
+        $response = $this->get('/test-route'); // Certifique-se de que 'admin' está correto aqui
         $response->assertStatus(200);
     }
     }

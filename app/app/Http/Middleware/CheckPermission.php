@@ -10,10 +10,8 @@ class CheckPermission
 {
     public function handle(Request $request, Closure $next)
     {
-        $path = $request->path();
-        $permission = substr($path, strrpos($path, '/') + 1);
         $user = Auth::user();
-        if ($user === null) {
+        if (!$user->can('admin')){
             abort(403, 'Unauthorized action.');
         }
         
