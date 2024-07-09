@@ -10,5 +10,8 @@ class Permission extends Model
     use HasFactory;
     protected $fillable = ['permission'];
 
-
+    public function users(): BelongsToMany
+    {
+        return $this->belongsToMany(User::class);
+    }
 }

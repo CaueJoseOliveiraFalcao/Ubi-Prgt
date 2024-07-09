@@ -24,6 +24,15 @@ class PermissionUserTest extends TestCase
         ]);
         
     }
+    public function test_user_has_permission_to_access_route()
+    {
+                /** @var User $user */
+        $user = User::factory()->create();
+        $user->givePermissionTo('admin');
+        $this->actingAs($user);
 
+        $response = $this->get('/test-route/admin'); // Certifique-se de que 'admin' está correto aqui
+        $response->assertStatus(200);
+    }
     }
 

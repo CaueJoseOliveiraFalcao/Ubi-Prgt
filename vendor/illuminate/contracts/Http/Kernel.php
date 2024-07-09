@@ -9,6 +9,7 @@ interface Kernel
      *
      * @return void
      */
+    
     public function bootstrap();
 
     /**

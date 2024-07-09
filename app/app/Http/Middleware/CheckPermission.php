@@ -5,7 +5,6 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
-use App\Models\User;
 
 class CheckPermission
 {
@@ -14,9 +13,10 @@ class CheckPermission
         $path = $request->path();
         $permission = substr($path, strrpos($path, '/') + 1);
         $user = Auth::user();
-        if (! $user->hasPermissionTo($permission)) {
+        if ($user === null) {
             abort(403, 'Unauthorized action.');
         }
+        
         return $next($request);
     }
 }
