@@ -4,9 +4,11 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use App\Models\Permission;
+use App\Models\Site;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 class User extends Authenticatable
 {
@@ -21,7 +23,8 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-        'telefone'
+        'telefone',
+        'cnpj'
     ];
 
     /**
@@ -59,5 +62,9 @@ class User extends Authenticatable
     public function permissions(): BelongsToMany
     {
         return $this->belongsToMany(Permission::class);
+    }
+    public function site(): HasMany
+    {
+        return $this->hasMany(Site::class);
     }
 }

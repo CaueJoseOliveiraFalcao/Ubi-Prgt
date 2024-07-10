@@ -31,15 +31,19 @@ class RegisteredUserController extends Controller
     {
         $valid = $request->validate([
             'name' => ['required', 'string', 'max:255'],
+            'cnpj' => ['required', 'string','size:14' , 'unique:users,cnpj'],
+            'telefone' => ['required', 'size:10' , 'unique:users,telefone'],
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
             'password' => ['required'],
-            'telefone' => ['required', 'min:11'],
+
         ]);
+
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
+            'cnpj' => $request->cnpj,
+            'telefone' => $request->telefone,
             'password' => Hash::make($request->password),
-            'telefone' => $request->telefone
         ]);
 
         $user->givePermissionTo('admin');

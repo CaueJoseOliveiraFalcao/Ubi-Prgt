@@ -47,5 +47,15 @@ class PermissionUserTest extends TestCase
                  dump($fromCache);
                 $this->assertCount(1 , $fromCache);
     }
+    public function test_user_register(){
+                    /** @var User $user */
+                    $user = User::factory()->createOne();
+                    $this->assertNotNull($user);
+
+                    $this->assertDatabaseHas('users' , [
+                        'id' => $user->id,
+                        'email' => $user->email,
+                    ]);
+    }
     }
 

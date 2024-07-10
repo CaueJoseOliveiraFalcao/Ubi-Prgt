@@ -29,6 +29,7 @@
             type="text"
             id="telefone"
             name="telefone"
+            maxlength="10"
             class="input-no-border email"
             required
             placeholder="Digite seu telefone"
@@ -42,6 +43,16 @@
             class="input-no-border email"
             required
             placeholder="Digite seu email"
+          />
+          <label for="cnpj">cnpj:</label>
+          <input
+            type="text"
+            id="cnpj"
+            name="cnpj"
+            maxlength="14"
+            class="input-no-border email"
+            required
+            placeholder="Digite seu Cnpj"
           />
 
           <label for="password">Senha:</label>
