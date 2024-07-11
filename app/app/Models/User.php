@@ -67,4 +67,8 @@ class User extends Authenticatable
     {
         return $this->hasMany(Site::class);
     }
+    public function siteRegisters(): HasMany
+    {
+        return $this->hasMany(SiteRegister::class);
+    }
 }
