@@ -10,8 +10,10 @@ class Site extends Model
 {
     use HasFactory;
     protected $fillable = [
+        'user_id',
         'projectName',
         'status',
+        'desc',
         'acess_count',
         'average_public_region',
         'average_public_age'
