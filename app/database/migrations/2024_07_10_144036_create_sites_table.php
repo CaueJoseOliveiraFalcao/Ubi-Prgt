@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('sites', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->string('desc')->nullable(false);
             $table->string('projectName')->nullable(false);
             $table->string('status')->nullable(false);
             $table->integer('acess_count')->nullable(false);
