@@ -18,8 +18,11 @@
         <a href="/users-painel">Admin Painel</a>
     @endcan
     <a href="/site-creator">Criação do Site</a>
-    {{$user}}
-    @if (!$site->isEmpty())
+    {{$sites->isEmpty()}}
+    @if ($sites->isEmpty())
+        <h1>Você nao tem nehum site no ar</h1>
+        
+    @else
     <div class="container">
         <table class="table">
             <thead>
