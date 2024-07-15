@@ -14,9 +14,9 @@
                             @csrf
                             <div class="form-group">
                                 <select name="status" class="form-control" required>
-                                    <option value="Em Analise" @if($site->status == 'Em Analise') selected @endif>Em Análise</option>
-                                    <option value="Aprovado" @if($site->status == 'Aprovado') selected @endif>Aprovado</option>
-                                    <option value="Rejeitado" @if($site->status == 'Rejeitado') selected @endif>Rejeitado</option>
+                                    <option value="Analise de Requisitos" @if($site->status == 'Analise de Requisitos') selected @endif>Analise de Requisitos</option>
+                                    <option value="Desenvolvimento" @if($site->status == 'Desenvolvimento') selected @endif>Desenvolvimento</option>
+                                    <option value="no Ar" @if($site->status == 'no Ar') selected @endif>no Ar</option>
                                 </select>
                             </div>
                             <button type="submit" class="btn btn-primary">Atualizar</button>

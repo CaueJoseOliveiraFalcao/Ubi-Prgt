@@ -24,7 +24,7 @@ class AdminController extends Controller
             $sites = $user->site ?? collect();
             return view('users-site' , compact('user','sites'));
         } catch (\Throwable $th) {
-            return redirect()->route('admin-painel');
+            return redirect()->route('admin.show');
         }
 
 

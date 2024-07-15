@@ -21,7 +21,7 @@ class SiteController extends Controller
             'user_id'=> $user->id,
             'projectName'=> $request->project_name,
             'desc'=> $request->project_desc,
-            'status' => 'Em Analise',
+            'status' => 'Analise de Requisitos',
             'acess_count' => 0,
             'average_public_region' => 0,
             'average_public_age' =>0
@@ -36,7 +36,7 @@ class SiteController extends Controller
             $site->save();
             return redirect()->route('user-web-sites', ['id' => $site->user_id])->with('success', 'Status atualizado com sucesso.');
         } catch (\Throwable $th) {
-            return redirect()->route('user-web-sites');
+            return redirect()->route('user-web-sites' , ['id' => $site->user_id]);
         }
     }
 }

@@ -22,7 +22,10 @@
                 <td>{{ $user->email }}</td>
                 <td>{{ $user->telefone }}</td>
                 <td>{{ $user->cnpj }}</td>
-                <td><a href="/user-web-sites/{$user->id}">Ver Sites</a></td>
+                <form action="/user-web-sites/{{$user->id}}" method="GET" >
+                    <td><input type="submit" value="Ver Sites" /></td>
+                </form>
+
             </tr>
             @endforeach
         </tbody>
