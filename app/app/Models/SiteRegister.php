@@ -7,6 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class SiteRegister extends Model
 {
+    protected $fillable = [
+        'user_id',
+        'site_id',
+        'today_acess'
+    ];
     use HasFactory;
     public function site()
     {

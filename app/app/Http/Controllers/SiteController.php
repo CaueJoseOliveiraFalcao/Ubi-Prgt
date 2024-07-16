@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\SiteRegister;
 use Auth;
 use Illuminate\Http\Request;
 use App\Models\Site;
@@ -28,6 +29,15 @@ class SiteController extends Controller
         ]);
 
         return redirect()->route('dashboard')->with('success');
+    }
+    public function create_site_registe($site_id , $user_id){
+
+        $siteRegister = SiteRegister::create([
+            'user_id' => $user_id,
+            'site_id' => $site_id,
+            'today_acess' => 100
+        ]);
+        $siteRegister->save();
     }
     public function change_status($id , Request $request){
         try {

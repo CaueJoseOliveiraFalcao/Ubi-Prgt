@@ -75,6 +75,11 @@ class Kernel extends HttpKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // Schedule de comandos agendados
+        $schedule
+            ->call(function() {
+                info('nauai');
+            })
+            ->everyMinute();
+
     }
 }
