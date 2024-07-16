@@ -16,8 +16,7 @@ class ProfileController extends Controller
      */
     public function show() {
         $user = Auth::user();
-        $sites = $user->sites;
-    
+        $sites = $user->site ?? collect();
         return view("dashboard", compact("user", "sites"));
     }
     public function edit(Request $request): View

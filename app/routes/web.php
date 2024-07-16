@@ -13,6 +13,9 @@ Route::get('/dashboard', [ProfileController::class, 'show'])->middleware(['auth'
 
 Route::middleware(['auth','isAdmin'])->group(function () {
     Route::get('/users-painel', [AdminController::class,'show'])->name('admin.show');
+    Route::get('/user-web-sites/{id}', [AdminController::class,'show_user_sites'])->name('user-web-sites');
+
+    Route::post('/user-web-sites-change-status/{id}', [SiteController::class,'change_status'])->name('change_status_site');
 });
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
