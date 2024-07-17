@@ -1,6 +1,15 @@
 
 <body>
     <form method="POST" action="{{ route('login') }}">
+      @if ($errors->any())
+      <div class="alert alert-danger">
+          <ul>
+              @foreach ($errors->all() as $error)
+                  <span>{{ $error }}</span>
+              @endforeach
+          </ul>
+      </div>
+      @endif
         @csrf
         <div class="Conta">
             <h2>Login</h2>
@@ -26,6 +35,19 @@
 </body>
     </form>
     <style>
+        ul{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: red;
+    padding: 1rem;
+    background-color: black;
+    border-radius: 10px;
+  }
+  span{
+    color: red;
+  }
         body {
             font-family: Arial, sans-serif;
             background-color: #f0f0f0;
@@ -147,7 +169,6 @@ h4{
   background-color: black;
   color: white;
   font-weight: 600;
-  margin-left: -40px;
   margin-top: 20px;
 }
 
@@ -161,7 +182,6 @@ h4{
 .links {
   text-align: center;
   margin-top: 20px;
-  margin-right: 38px;
 }
 
 .links a {
