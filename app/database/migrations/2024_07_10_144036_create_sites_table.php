@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('projectName')->nullable(false);
             $table->string('status')->nullable(false);
             $table->integer('acess_count')->nullable(false);
-            $table->integer('average_public_region')->nullable(false);
+            $table->string('average_public_region')->nullable(false);
             $table->integer('average_public_age')->nullable(false);
             $table->timestamps();
         });

@@ -10,7 +10,7 @@
     <div class="alert alert-danger">
         <ul>
             @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
+                <span>{{ $error }}</span>
             @endforeach
         </ul>
     </div>
@@ -78,6 +78,19 @@
   </body>
 </html>
 <style>
+  ul{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: red;
+    padding: 1rem;
+    background-color: black;
+    border-radius: 10px;
+  }
+  span{
+    color: red;
+  }
           .bg-gradiente {
         background-image: linear-gradient(
           to bottom,
