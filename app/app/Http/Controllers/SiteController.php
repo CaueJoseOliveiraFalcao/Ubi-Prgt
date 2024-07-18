@@ -17,7 +17,7 @@ class SiteController extends Controller
             'project_name' => ['required', 'string'],
             'project_desc' => ['required', 'string' , 'max:255'],
         ]);
-        $public_age_ramdom = rand(17,70);
+        $public_age_ramdom = rand(18,70);
         $acces = rand(109,1000);
         $site = Site::create([
             'user_id'=> $user->id,
